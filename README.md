@@ -1,4 +1,4 @@
-# 📊 Marketing Campaign Optimization & ROI Analysis
+# Marketing Campaign Optimization & ROI Analysis
 ### Python | SQL Server | Power BI
 
 ---
