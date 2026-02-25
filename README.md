@@ -8,12 +8,18 @@
 ### Executive Summary & Exposure Analysis
 
 <p align="center">
-  <img src="dashboard/screenshots/dashboard_executive_summary.jpg" width="400" style="border:1px solid #ccc; box-shadow: 2px 2px 12px #aaa; border-radius:4px;" />
-  <img src="dashboard/screenshots/exposure_profit_analysis.jpg" width="400" style="border:1px solid #ccc; box-shadow: 2px 2px 12px #aaa; border-radius:4px;" />
+  <img src="dashboard/screenshots/dashboard_executive_summary.jpg"
+       width="900"
+       style="border:1px solid #ddd; border-radius:6px;" />
 </p>
 
-*Left: Conversion Performance Summary | Right: Exposure & ROI Analysis*
+<br>
 
+<p align="center">
+  <img src="dashboard/screenshots/exposure_profit_analysis.jpg"
+       width="900"
+       style="border:1px solid #ddd; border-radius:6px;" />
+</p>
 
 ## 1. Project Overview
 
