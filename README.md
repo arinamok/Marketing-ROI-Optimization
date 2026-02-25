@@ -2,15 +2,17 @@
 ### Python | SQL Server | Power BI
 
 ---
-![Dashboard Preview](dashboard/screenshots/exposure_profit_analysis.png)
+
 ## Dashboard Preview
 
 ### Executive Summary & Exposure Analysis
 
 <p align="center">
-  <img src="dashboard/screenshots/dashboard_executive_summary.png" width="400" style="border:1px solid #ccc; box-shadow: 2px 2px 12px #aaa; border-radius:4px;" />
-  <img src="dashboard/screenshots/exposure_profit_analysis.png" width="400" style="border:1px solid #ccc; box-shadow: 2px 2px 12px #aaa; border-radius:4px;" />
+  <img src="dashboard/screenshots/dashboard_executive_summary.jpg" width="400" style="border:1px solid #ccc; box-shadow: 2px 2px 12px #aaa; border-radius:4px;" />
+  <img src="dashboard/screenshots/exposure_profit_analysis.jpg" width="400" style="border:1px solid #ccc; box-shadow: 2px 2px 12px #aaa; border-radius:4px;" />
 </p>
+
+*Left: Conversion Performance Summary | Right: Exposure & ROI Analysis*
 
 
 ## 1. Project Overview
@@ -40,13 +42,13 @@ This project evaluates an A/B marketing campaign to determine whether paid adver
 
 **Engineered columns:** `revenue`, `cost_per_impression`, `total_cost`, `profit`, `roi`
 
-**The Dataset:** `marketing_AB_enhanced.csv` — **588,101 rows · 12 columns**
+**The Dataset:** `marketing_AB_enhanced.csv` - **588,101 rows · 12 columns**
 
 ---
 
 ## 3. Data Cleaning & Engineering Pipeline
 
-### Phase 1: Python (`MarketingABTestingDataCleaning.ipynb`)
+### Phase 1: Python (`marketing_AB_data_cleaning.ipynb`)
 
 ```python
 import pandas as pd
@@ -160,7 +162,7 @@ GROUP BY test_group;
 | **Total Profit** | **$2,655.28** | **$59,437.75** |
 | Avg ROI | 4.08 | 1.39 |
 
-**Key Insight:** The Ad group generates more absolute revenue but has a lower average ROI (1.39 vs 4.08). Ads drive volume but are less efficient per dollar spent — which is why exposure optimization matters.
+**Result Summary:** The Ad group generates more absolute revenue but has a lower average ROI (1.39 vs 4.08). Ads drive volume but are less efficient per dollar spent, which is why exposure optimization matters.
 
 ---
 
@@ -193,7 +195,7 @@ lift = (ad_conv - psa_conv) / psa_conv * 100
 | 95% Confidence Interval | (−0.0026, 0.0123) |
 | Statistically Significant? | ❌ Not at 95% level |
 
-**Interpretation:** The 28% lift is promising but statistically unconfirmed. The root cause is a severe sample imbalance — 33,568 users in the Ad group vs. only 1,432 in the PSA group (23:1 ratio). The confidence interval crosses zero, meaning the true difference could still be zero or negative. Increasing the PSA sample size is a prerequisite to drawing a valid conclusion.
+**Interpretation:** The 28% lift is promising but statistically unconfirmed. The root cause is a severe sample imbalance having 33,568 users in the Ad group vs. only 1,432 in the PSA group (23:1 ratio). The confidence interval crosses zero, meaning the true difference could still be zero or negative. Increasing the PSA sample size is a prerequisite to drawing a valid conclusion.
 
 ---
 
@@ -225,7 +227,7 @@ GROUP BY
 | **51–200** | **3,700** | **12.57%** | **+49.98%** | **+$7,622.21 ✅** |
 | 200+ | 378 | 15.61% | +190.00% | **−$2,863.40** ❌ |
 
-**The "Profit Trap":** The 200+ bucket has the highest conversion rate (15.61%) and the most dramatic behavioral lift (190%) — yet it *loses* money. The cost of delivering that many impressions exceeds the revenue generated. The Python analysis revealed the behavioral story. Power BI revealed the financial consequence.
+**The "Profit Trap":** The 200+ bucket has the highest conversion rate (15.61%) and the most dramatic behavioral lift (190%), yet it *loses* money. The cost of delivering that many impressions exceeds the revenue generated. The Python analysis revealed the behavioral story. Power BI revealed the financial consequence.
 
 ---
 
@@ -261,7 +263,7 @@ ORDER BY most_ads_hour;
 
 - **Monday** = highest conversion rate and revenue; performance declines toward Friday with modest weekend recovery
 - **Peak conversion window: 14:00–16:00** · Weakest: early morning hours
-- Supports a **dayparting strategy** — concentrating high-value ad delivery during peak windows
+- Supports a **dayparting strategy**, concentrating high-value ad delivery during peak windows
 
 ---
 
@@ -293,25 +295,27 @@ The campaign is barely breaking even. The 2.99% ROI is almost entirely sustained
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 ├── data/
 │   ├── marketing_AB.csv                      # Original Kaggle dataset
 │   ├── marketing_AB_enhanced.csv             # + Engineered financial columns
-│   └── marketing_AB_sample.csv              # 35,000-row sample used in SQL
+│   └── marketing_AB_sample.csv               # 35,000-row sample used in SQL
 ├── notebooks/
-│   ├── MarketingABTestingDataCleaning.ipynb  # Python: cleaning + sampling
-│   └── marketing_AB_test_analysis.ipynb     # Python: A/B testing + lift analysis
+│   ├── marketing_AB_data_cleaning.ipynb      # Python: cleaning + sampling
+│   └── marketing_AB_test_analysis.ipynb      # Python: A/B testing + lift analysis
 ├── sql_queries/
-│   └── marketing_ab_analysis.sql            # Schema fixes, KPI queries, exposure + time analysis
+│   └── sql_data_cleaning.sql                 # Schema fixes, KPI queries, exposure + time analysis
 └── dashboard/
-    ├── Data_Visualization.pbix              # Power BI dashboard
-    └── screenshots/                         # Executive Summary + Exposure Analysis pages
-```
+    ├── marketing_campaign_dashboard.pbix     # Power BI dashboard
+    └── screenshots/                          # Executive Summary + Exposure Analysis pages
+        ├── dashboard_executive_summary.jpg
+        └── exposure_profit_analysis.jpg
+``` 
 
 ---
 
-*Author: [Your Name]*
-*Links: [LinkedIn] · [Portfolio]*
+*Author: [Arina Mokeeva]*
+*Links: [LinkedIn]*
 
