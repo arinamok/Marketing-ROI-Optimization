@@ -38,7 +38,7 @@ This project evaluates an A/B marketing campaign to determine whether paid adver
 
 **The Challenge:** The original dataset was behavioral only. It could tell you *if* users converted, not whether the campaign was actually worth the money.
 
-**The Solution:** A financial simulation layer was engineered in Python using realistic industry benchmarks to unlock ROI analysis:
+**The Solution:** A financial simulation layer was engineered using AI to unlock ROI analysis:
 
 | Assumption | Value |
 |---|---|
@@ -229,9 +229,9 @@ GROUP BY
 
 | Ads Bucket | Users | Conversion Rate | Lift vs PSA | Total Profit |
 |---|---|---|---|---|
-| 0–50 | 30,922 | 1.12% | +0.51% | **−$3,495.78** ❌ |
-| **51–200** | **3,700** | **12.57%** | **+49.98%** | **+$7,622.21 ✅** |
-| 200+ | 378 | 15.61% | +190.00% | **−$2,863.40** ❌ |
+| 0–50 | 30,922 | 1.12% | +0.51% | **−$3,495.78** |
+| **51–200** | **3,700** | **12.57%** | **+49.98%** | **+$7,622.21** |
+| 200+ | 378 | 15.61% | +190.00% | **−$2,863.40** |
 
 **The "Profit Trap":** The 200+ bucket has the highest conversion rate (15.61%) and the most dramatic behavioral lift (190%), yet it *loses* money. The cost of delivering that many impressions exceeds the revenue generated. The Python analysis revealed the behavioral story. Power BI revealed the financial consequence.
 
@@ -306,7 +306,7 @@ The campaign is barely breaking even. The 2.99% ROI is almost entirely sustained
 ```
 ├── data/
 │   ├── marketing_AB.csv                      # Original Kaggle dataset
-│   ├── marketing_AB_enhanced.csv             # + Engineered financial columns
+│   ├── marketing_AB_enhanced.xlsb             # + Engineered financial columns, as .xlsb to reduce size of file
 │   └── marketing_AB_sample.csv               # 35,000-row sample used in SQL
 ├── notebooks/
 │   ├── marketing_AB_data_cleaning.ipynb      # Python: cleaning + sampling
