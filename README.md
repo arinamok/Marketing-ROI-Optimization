@@ -16,7 +16,7 @@
 <br>
 
 <p align="center">
-  <img src="dashboard/screenshots/exposure_profit_analysis.jpg"
+  <img src="dashboard/screenshots//exposure_profit_analysis.jpg"
        width="900"
        style="border:1px solid #ddd; border-radius:6px;" />
 </p>
