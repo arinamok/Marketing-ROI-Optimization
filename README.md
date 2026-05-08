@@ -322,6 +322,3 @@ The campaign is barely breaking even. The 2.99% ROI is almost entirely sustained
 
 ---
 
-*Author: [Arina Mokeeva]*
-*Links: [LinkedIn]*
-
