@@ -1,5 +1,5 @@
 # Marketing Campaign Optimization & ROI Analysis
-### Python | SQL Server | Power BI
+### SQL Server | Python | Power BI
 
 ---
 
@@ -26,7 +26,7 @@
 This project evaluates an A/B marketing campaign to determine whether paid advertising drives meaningfully better results than a control group (PSA), and at what frequency level ad spend becomes genuinely profitable, not just behaviorally effective.
 
 **The Business Question:**
-> *"Does the paid ad campaign generate significantly higher conversion and ROI than the PSA (control), and what ad exposure level maximizes profitability?"*
+> *Does the paid ad campaign generate significantly higher conversion and ROI than the PSA (control), and what ad exposure level maximizes profitability?*
 
 **Dataset Source:** [Kaggle – Marketing A/B Testing Dataset](https://www.kaggle.com/datasets/faviovaz/marketing-ab-testing?resource=download&select=marketing_AB.csv)
 
@@ -123,7 +123,7 @@ SELECT
     SUM(CASE WHEN test_group IS NULL THEN 1 ELSE 0 END) AS null_test_group,
     SUM(CASE WHEN converted  IS NULL THEN 1 ELSE 0 END) AS null_converted
 FROM marketing_AB_sample;
--- ✔ 35,000 rows · 0 nulls
+-- 35,000 rows · 0 nulls
 ```
 
 ---
@@ -199,7 +199,7 @@ lift = (ad_conv - psa_conv) / psa_conv * 100
 | **Lift** | **+28.13%** |
 | **p-value** | **0.1902** |
 | 95% Confidence Interval | (−0.0026, 0.0123) |
-| Statistically Significant? | ❌ Not at 95% level |
+| Statistically Significant? | Not at 95% level |
 
 **Interpretation:** The 28% lift is promising but statistically unconfirmed. The root cause is a severe sample imbalance having 33,568 users in the Ad group vs. only 1,432 in the PSA group (23:1 ratio). The confidence interval crosses zero, meaning the true difference could still be zero or negative. Increasing the PSA sample size is a prerequisite to drawing a valid conclusion.
 
@@ -305,17 +305,17 @@ The campaign is barely breaking even. The 2.99% ROI is almost entirely sustained
 
 ```
 ├── data/
-│   ├── marketing_AB.csv                      # Original Kaggle dataset
-│   ├── marketing_AB_enhanced.xlsb             # + Engineered financial columns, as .xlsb to reduce size of file
-│   └── marketing_AB_sample.csv               # 35,000-row sample used in SQL
+│   ├── marketing_AB.csv
+│   ├── marketing_AB_enhanced.xlsb
+│   └── marketing_AB_sample.csv
 ├── notebooks/
-│   ├── marketing_AB_data_cleaning.ipynb      # Python: cleaning + sampling
-│   └── marketing_AB_test_analysis.ipynb      # Python: A/B testing + lift analysis
+│   ├── marketing_AB_data_cleaning.ipynb
+│   └── marketing_AB_test_analysis.ipynb
 ├── sql_queries/
-│   └── sql_data_cleaning.sql                 # Schema fixes, KPI queries, exposure + time analysis
+│   └── sql_data_cleaning.sql
 └── dashboard/
-    ├── marketing_campaign_dashboard.pbix     # Power BI dashboard
-    └── screenshots/                          # Executive Summary + Exposure Analysis pages
+    ├── marketing_campaign_dashboard.pbix
+    └── screenshots/
         ├── dashboard_executive_summary.jpg
         └── exposure_profit_analysis.jpg
 ``` 
